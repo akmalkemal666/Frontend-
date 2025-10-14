@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan Event Keyboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+      margin-top: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    #pesan {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #222;
+    }
+
+    #log {
+      margin-top: 15px;
+      font-family: monospace;
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ddd;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎹 Latihan Event Keyboard di JavaScript</h2>
+  <p>Ketik sesuatu di dalam kotak input di bawah ini:</p>
+
+  <input type="text" id="teksInput"
+         onkeydown="tekanTombol(event)"
+         onkeypress="tombolDitekan(event)"
+         onkeyup="lepasTombol(event)"
+         placeholder="Ketik di sini..." />
+
+  <div id="pesan">Event keyboard akan muncul di sini...</div>
+
+  <div id="log"></div>
+
+  <script>
+    const pesan = document.getElementById("pesan");
+    const log = document.getElementById("log");
+
+    function tekanTombol(e) {
+      pesan.innerHTML = "⬇️ Event: onkeydown — Tombol ditekan";
+      log.innerHTML = "Kode tombol: " + e.key + " (" + e.keyCode + ")";
+    }
+
+    function tombolDitekan(e) {
+      pesan.innerHTML = "🎵 Event: onkeypress — Menekan karakter";
+    }
+
+    function lepasTombol(e) {
+      pesan.innerHTML = "⬆️ Event: onkeyup — Tombol dilepas";
+      log.innerHTML = "Kamu mengetik: " + e.target.value;
+    }
+  </script>
+
+</body>
+</html>

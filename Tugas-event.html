@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program Penjualan Motor</title>
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  body {
+    background: #f2f6fc;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 30px;
+    width: 700px;
+  }
+
+  h2 {
+    text-align: center;
+    color: #2b3a67;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+  }
+
+  table {
+    width: 100%;
+    border-spacing: 10px;
+  }
+
+  td {
+    padding: 8px 0;
+    vertical-align: top;
+  }
+
+  select, input[type="text"], input[type="button"], input[type="reset"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  input[type="button"], input[type="reset"] {
+    width: 48%;
+    background-color: #2b3a67;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+  }
+
+  input[type="reset"] {
+    background-color: #999;
+  }
+
+  input[type="button"]:hover {
+    background-color: #40528a;
+  }
+
+  input[type="reset"]:hover {
+    background-color: #777;
+  }
+
+  .aksi {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+
+  .info {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f9fafc;
+    border-left: 5px solid #2b3a67;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .harga-table {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .harga-table table {
+    width: 48%;
+    border-collapse: collapse;
+  }
+
+  .harga-table th {
+    background: #2b3a67;
+    color: white;
+  }
+
+  .harga-table th, .harga-table td {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 8px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>PROGRAM PENJUALAN MOTOR</h2>
+
+  <form name="formMotor">
+    <table>
+      <tr>
+        <td width="35%">Merk Motor</td>
+        <td>
+          <select name="merk" id="merk">
+            <option value="Honda">Honda</option>
+            <option value="Yamaha">Yamaha</option>
+            <option value="Suzuki">Suzuki</option>
+            <option value="Piaggio">Piaggio</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Aksesoris</td>
+        <td>
+          <label><input type="checkbox" name="aksesoris" value="Velg"> Velg Racing</label><br>
+          <label><input type="checkbox" name="aksesoris" value="Helm"> Helm</label><br>
+          <label><input type="checkbox" name="aksesoris" value="Jaket"> Jaket</label><br>
+          <label><input type="checkbox" name="aksesoris" value="Knalpot"> Knalpot</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Cara Pembayaran</td>
+        <td>
+          <label><input type="radio" name="bayar" value="Tunai"> Tunai</label>
+          <label><input type="radio" name="bayar" value="Kredit"> Kredit</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Harga</td>
+        <td><input type="text" id="harga" readonly></td>
+      </tr>
+      <tr>
+        <td>Bunga / Diskon</td>
+        <td><input type="text" id="bungaDiskon" readonly></td>
+      </tr>
+      <tr>
+        <td>Total Bayar</td>
+        <td><input type="text" id="total" readonly></td>
+      </tr>
+    </table>
+
+    <div class="aksi">
+      <input type="button" value="Proses" onclick="proses()">
+      <input type="reset" value="Reset">
+    </div>
+  </form>
+
+  <div class="harga-table">
+    <table>
+      <tr><th>Merk Motor</th><th>Harga</th></tr>
+      <tr><td>Honda</td><td>15.000.000</td></tr>
+      <tr><td>Yamaha</td><td>14.000.000</td></tr>
+      <tr><td>Suzuki</td><td>13.000.000</td></tr>
+      <tr><td>Piaggio</td><td>35.000.000</td></tr>
+    </table>
+
+    <table>
+      <tr><th>Aksesoris</th><th>Harga</th></tr>
+      <tr><td>Velg Racing</td><td>450.000</td></tr>
+      <tr><td>Helm</td><td>250.000</td></tr>
+      <tr><td>Jaket</td><td>300.000</td></tr>
+      <tr><td>Knalpot</td><td>1.200.000</td></tr>
+    </table>
+  </div>
+
+  <div class="info">
+    💡 <b>Catatan:</b><br>
+    Jika membayar secara <b>Tunai</b> akan mendapat <b>diskon 10%</b>.<br>
+    Jika membayar secara <b>Kredit</b> akan dikenakan <b>bunga 15%</b>.
+  </div>
+</div>
+
+<script>
+function proses() {
+  let merk = document.getElementById("merk").value;
+  let hargaMotor = 0;
+
+  if (merk === "Honda") hargaMotor = 15000000;
+  else if (merk === "Yamaha") hargaMotor = 14000000;
+  else if (merk === "Suzuki") hargaMotor = 13000000;
+  else if (merk === "Piaggio") hargaMotor = 35000000;
+
+  let aksesoris = document.getElementsByName("aksesoris");
+  let hargaAksesoris = 0;
+  for (let a of aksesoris) {
+    if (a.checked) {
+      if (a.value === "Velg") hargaAksesoris += 450000;
+      else if (a.value === "Helm") hargaAksesoris += 250000;
+      else if (a.value === "Jaket") hargaAksesoris += 300000;
+      else if (a.value === "Knalpot") hargaAksesoris += 1200000;
+    }
+  }
+
+  let totalHarga = hargaMotor + hargaAksesoris;
+
+  let pembayaran = document.getElementsByName("bayar");
+  let bungaDiskon = 0;
+  for (let b of pembayaran) {
+    if (b.checked) {
+      if (b.value === "Tunai") bungaDiskon = -(0.10 * totalHarga);
+      else if (b.value === "Kredit") bungaDiskon = 0.15 * totalHarga;
+    }
+  }
+
+  let totalBayar = totalHarga + bungaDiskon;
+
+  document.getElementById("harga").value = "Rp " + totalHarga.toLocaleString('id-ID');
+  document.getElementById("bungaDiskon").value = "Rp " + bungaDiskon.toLocaleString('id-ID');
+  document.getElementById("total").value = "Rp " + totalBayar.toLocaleString('id-ID');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan Mouse Event</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    #kotak {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+      border-radius: 10px;
+      margin: 20px auto;
+      line-height: 200px;
+      font-weight: bold;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎯 Latihan Mouse Event di JavaScript</h2>
+
+  <div id="kotak"
+       onclick="klikSekali()"
+       ondblclick="klikGanda()"
+       onmouseover="mouseMasuk()"
+       onmouseout="mouseKeluar()"
+       onmousedown="tahanKlik()"
+       onmouseup="lepasKlik()">
+    Arahkan / Klik Saya
+  </div>
+
+  <p id="pesan">Gerakkan atau klik kotak di atas untuk melihat hasil event.</p>
+
+  <script>
+    const kotak = document.getElementById("kotak");
+    const pesan = document.getElementById("pesan");
+
+    function klikSekali() {
+      kotak.style.backgroundColor = "yellow";
+      pesan.innerHTML = "🖱️ Event: Klik sekali (onclick)";
+    }
+
+    function klikGanda() {
+      kotak.style.backgroundColor = "orange";
+      pesan.innerHTML = "⚡ Event: Klik ganda (ondblclick)";
+    }
+
+    function mouseMasuk() {
+      kotak.style.backgroundColor = "lightgreen";
+      pesan.innerHTML = "🟢 Event: Kursor masuk (onmouseover)";
+    }
+
+    function mouseKeluar() {
+      kotak.style.backgroundColor = "lightblue";
+      pesan.innerHTML = "🔵 Event: Kursor keluar (onmouseout)";
+    }
+
+    function tahanKlik() {
+      kotak.style.backgroundColor = "red";
+      pesan.innerHTML = "🔴 Event: Klik ditekan (onmousedown)";
+    }
+
+    function lepasKlik() {
+      kotak.style.backgroundColor = "pink";
+      pesan.innerHTML = "🌸 Event: Klik dilepas (onmouseup)";
+    }
+  </script>
+
+</body>
+</html>
