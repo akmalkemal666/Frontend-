@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan Event Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    form {
+      background-color: #fff;
+      width: 350px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: dodgerblue;
+      background-color: #eef7ff;
+    }
+
+    button {
+      background-color: dodgerblue;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: royalblue;
+    }
+
+    #pesan {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2> Latihan Event Form di JavaScript</h2>
+
+  <form id="formData" onsubmit="return kirimForm()">
+    <label>Nama Lengkap:</label>
+    <input type="text" id="nama" onfocus="fokusInput(this)" onblur="blurInput(this)" placeholder="Masukkan nama Anda">
+
+    <label>Email:</label>
+    <input type="email" id="email" onfocus="fokusInput(this)" onblur="blurInput(this)" placeholder="Masukkan email Anda">
+
+    <label>Jenis Kelamin:</label>
+    <select id="gender" onchange="ubahGender()">
+      <option value="">-- Pilih --</option>
+      <option value="Laki-laki">Laki-laki</option>
+      <option value="Perempuan">Perempuan</option>
+    </select>
+
+    <label>Komentar:</label>
+    <textarea id="komentar" rows="4" onfocus="fokusInput(this)" onblur="blurInput(this)" placeholder="Tulis komentar..."></textarea>
+
+    <button type="submit">Kirim</button>
+  </form>
+
+  <div id="pesan">Isi form di atas untuk melihat event-nya bekerja.</div>
+
+  <script>
+    const pesan = document.getElementById("pesan");
+
+    function fokusInput(el) {
+      el.style.backgroundColor = "#e0f7fa";
+      pesan.innerHTML = " Sedang mengisi: " + el.placeholder;
+    }
+
+    function blurInput(el) {
+      el.style.backgroundColor = "white";
+      pesan.innerHTML = " Selesai mengisi " + el.placeholder;
+    }
+
+    function ubahGender() {
+      const gender = document.getElementById("gender").value;
+      if (gender) {
+        pesan.innerHTML = " Anda memilih: " + gender;
+      } else {
+        pesan.innerHTML = "Pilih jenis kelamin terlebih dahulu.";
+      }
+    }
+
+    function kirimForm() {
+      const nama = document.getElementById("nama").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const komentar = document.getElementById("komentar").value.trim();
+
+      if (nama === "" || email === "" || komentar === "") {
+        alert(" Semua kolom wajib diisi!");
+        return false; 
+      }
+
+      alert(" Terima kasih, " + nama + "! Formulir berhasil dikirim.");
+      pesan.innerHTML = "Form dikirim oleh: <b>" + nama + "</b> (" + email + ")";
+      return false; 
+    }
+  </script>
+
+</body>
+</html>

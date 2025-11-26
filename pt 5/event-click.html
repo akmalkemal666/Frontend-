@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Event click</title>
+</head>
+<body>
+  <h2>Latihan Event onclick</h2>
+  <p id="teks">Teks ini akan berubah setelah tombol diklik.</p>
+  <button onclick="ubahTeks()">Klik Saya</button>
+
+  <script>
+    function ubahTeks() {
+      document.getElementById("teks").innerHTML = "Teks berhasil diubah!";
+    }
+
+    const btnLogin = document.getElementById("hello-stikompgri");
+    btnLogin.addEventListener("click", function(){
+        alert("Hello Stikom PGRI");
+    });
+  </script>
+</body>
+</html>

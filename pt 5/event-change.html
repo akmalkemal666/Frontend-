@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan Event onchange</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    select, input, textarea {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 250px;
+      outline: none;
+    }
+
+    #hasil {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+
+  <h2> Latihan Event <code>onchange</code> di JavaScript</h2>
+
+  <p>Pilih warna favoritmu:</p>
+  <select id="warna" onchange="ubahWarna()">
+    <option value="">-- Pilih Warna --</option>
+    <option value="Merah">Merah</option>
+    <option value="Biru">Biru</option>
+    <option value="Hijau">Hijau</option>
+    <option value="Kuning">Kuning</option>
+  </select>
+
+  <p>Masukkan nama kamu:</p>
+  <input type="text" id="nama" placeholder="Ketik nama..." onchange="ubahNama()">
+
+  <p>Tulis komentar:</p>
+  <textarea id="komentar" rows="4" cols="30" placeholder="Tulis komentar..." onchange="ubahKomentar()"></textarea>
+
+  <div id="hasil">Hasil perubahan akan muncul di sini...</div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    function ubahWarna() {
+      const warna = document.getElementById("warna").value;
+      if (warna) {
+        hasil.innerHTML = " Warna favorit kamu adalah <b>" + warna + "</b>.";
+      } else {
+        hasil.innerHTML = "Silakan pilih warna terlebih dahulu.";
+      }
+    }
+
+    function ubahNama() {
+      const nama = document.getElementById("nama").value;
+      hasil.innerHTML = " Halo, <b>" + nama + "</b>!";
+    }
+
+    function ubahKomentar() {
+      const komentar = document.getElementById("komentar").value;
+      hasil.innerHTML = " Komentar kamu: <i>\"" + komentar + "\"</i>";
+    }
+  </script>
+
+</body>
+</html>
