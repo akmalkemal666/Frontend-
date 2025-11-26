@@ -1,0 +1,104 @@
+/* Umum */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #6dd5fa, #ffffff);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.container {
+  background: white;
+  margin-top: 60px;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+fieldset {
+  border: 2px solid #2196f3;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-weight: bold;
+  color: #2196f3;
+}
+
+/* Input & Button */
+input[type="text"] {
+  padding: 10px;
+  width: 70%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+button {
+  padding: 10px 14px;
+  margin-left: 6px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #0b79d0;
+}
+
+/* Daftar Barang */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: #f7f9fc;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+ul li button {
+  margin-left: 8px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+ul li button:nth-child(1) {
+  background-color: #ffb300;
+}
+
+ul li button:nth-child(1):hover {
+  background-color: #ffa000;
+}
+
+ul li button:nth-child(2) {
+  background-color: #f44336;
+}
+
+ul li button:nth-child(2):hover {
+  background-color: #d32f2f;
+}
